@@ -13,17 +13,19 @@ getPage.raise_for_status() #if error it will stop the program
 menu = bs4.BeautifulSoup(getPage.text, 'html.parser')
 foods = menu.select('.btn-add')
 
-the_one = 'out of stock' # This is the name of the food you are looking for
+the_one = 'out of stock' # If the button says 'Out of Stock'
 flength = len(the_one)
-available = False
+outOfStock = True
 
 for food in foods:
     for i in range(len(food.text)):
         chunk = food.text[i:i+flength].lower()
         if chunk == the_one:
-            available = False
+            outOfStock = True
 
-if available == True:
+if outOfStock == True:
+    print('SodaStream is not available.')
+else:
     conn = smtplib.SMTP('smtp.gmail.com', 587) # smtp address and port
     conn.ehlo() # call this to start the connection
     conn.starttls() # starts tls encryption. When we send our password it will be encrypted.
@@ -34,14 +36,3 @@ if available == True:
     for i in range(len(toAddress)):
         print(toAddress[i])
     print('')
-else:
-    conn = smtplib.SMTP('smtp.gmail.com', 587) # smtp address and port
-    conn.ehlo() # call this to start the connection
-    conn.starttls() # starts tls encryption. When we send our password it will be encrypted.
-    conn.login('mattcastillo2010@gmail.com', 'xghumulesnhngkyf')
-    conn.sendmail('mattcastillo2010@gmail.com', toAddress, 'Subject: SodaStream Alert!\n\nSorry\n\nSodaStream is out of stock :(\n\n')
-    conn.quit()
-    print('Sent notificaton e-mails for the following recipients:\n')
-    for i in range(len(toAddress)):
-        print(toAddress[i])
-    print('SodaStream is not available.')
