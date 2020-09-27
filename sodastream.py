@@ -35,4 +35,13 @@ if available == True:
         print(toAddress[i])
     print('')
 else:
+    conn = smtplib.SMTP('smtp.gmail.com', 587) # smtp address and port
+    conn.ehlo() # call this to start the connection
+    conn.starttls() # starts tls encryption. When we send our password it will be encrypted.
+    conn.login('mattcastillo2010@gmail.com', 'xghumulesnhngkyf')
+    conn.sendmail('mattcastillo2010@gmail.com', toAddress, 'Subject: SodaStream Alert!\n\nSorry\n\nSodaStream is out of stock :(\n\n')
+    conn.quit()
+    print('Sent notificaton e-mails for the following recipients:\n')
+    for i in range(len(toAddress)):
+        print(toAddress[i])
     print('SodaStream is not available.')
