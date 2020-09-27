@@ -1,1 +1,1 @@
-web: gunicorn sodastream-instock.wsgi --log-file - --log-level debug
+web: python sodastream.py --log-file - --log-level debug
