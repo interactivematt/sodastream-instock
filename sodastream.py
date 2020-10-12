@@ -24,16 +24,16 @@ for action in button:
             inStock = True
 
 if inStock == True:
-    conn = smtplib.SMTP('smtp.gmail.com', 587) # smtp address and port
-    conn.ehlo() # call this to start the connection
-    conn.starttls() # starts tls encryption. When we send our password it will be encrypted.
-    conn.login('mattcastillo2010@gmail.com', 'xghumulesnhngkyf')
-    conn.sendmail('mattcastillo2010@gmail.com', toAddress, 'Subject: SodaStream Alert!\n\nAttention!\n\nIN STOCK NOW.\n\n')
-    conn.quit()
-    print('Sent notificaton e-mails for the following recipients:\n')
-    for i in range(len(toAddress)):
-        print(toAddress[i])
-    print('')
+    #conn = smtplib.SMTP('smtp.gmail.com', 587) # smtp address and port
+    #conn.ehlo() # call this to start the connection
+    #conn.starttls() # starts tls encryption. When we send our password it will be encrypted.
+    #conn.login('mattcastillo2010@gmail.com', 'xghumulesnhngkyf')
+    #conn.sendmail('mattcastillo2010@gmail.com', toAddress, 'Subject: SodaStream Alert!\n\nAttention!\n\nIN STOCK NOW.\n\n')
+    #conn.quit()
+    #print('Sent notificaton e-mails for the following recipients:\n')
+    #for i in range(len(toAddress)):
+        #print(toAddress[i])
+    print('In Stock')
 else:
     conn = smtplib.SMTP('smtp.gmail.com', 587) # smtp address and port
     conn.ehlo() # call this to start the connection
